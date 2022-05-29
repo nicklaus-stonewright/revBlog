@@ -1,42 +1,26 @@
-/* html,
+html,
 body {
-  margin: 0;
-  padding: 0;
   font-family: "Trebuchet MS", Arial, sans-serif;
 }
 
-.app {
-  display: flex;
-} */
-
 /* -------- homepage  -------- */
 
-/* .homepage {
+.homepage {
   padding: 10px !important;
-} */
+}
 
 /* -------- blog post -------- */
 
-/* .blog-post {
-  display: flex;
-  width: 100%;
-}
-
-.blog-post .post-color {
-  width: 15px !important;
-  padding: 10px !important;
-  margin: 2px;
-}
-
 .blog-post:nth-child(odd) {
-  background-color: antiquewhite;
+  background-color: rgb(182, 182, 207);
 }
 .blog-post:nth-child(even) {
-  background-color: cornsilk;
-} */
+  background-color: rgb(250, 245, 227);
+}
 
 /* -------- post owner image -------- */
-/* .blog-post .avatar-container {
+
+.blog-post .avatar-container {
   display: flex;
   justify-content: center;
   width: 80px;
@@ -51,4 +35,4 @@ body {
 
 .blog-post .image-container img {
   width: 100%;
-} */
+}
