@@ -4,6 +4,9 @@ import BlogPosts from "../collection/BlogPosts";
 import LatestNews from "../collection/LatestNews";
 
 const Homepage = () => {
+
+
+
   return (
     <div className="homepage">
       <div className="bar-container">
