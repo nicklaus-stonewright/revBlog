@@ -36,3 +36,33 @@
       support: "unsupported",
     },
   ];
+
+
+
+
+    const newsArticles = [
+    {
+      title: "review was focused on finding mistakes",
+      description: "they kept trying to find mistakes in everything I did",
+      publisher: "France24",
+      image: "./assets/images/owsama-hat.jpg",
+      timestamp: "2022-02-11T07:36:17+0000",
+      link: "/#",
+    },
+    {
+      title: "finding mistakes",
+      description: " in everything I did",
+      publisher: "BBC News",
+      image: "./assets/images/owsama-hat.jpg",
+      timestamp: "2022-02-11T07:36:17+0000",
+      link: "/#",
+    },
+    {
+      title: "focused on mistakes",
+      description: "they kept  I did",
+      publisher: "ITV",
+      image: "./assets/images/owsama-hat.jpg",
+      timestamp: "2022-02-11T07:36:17+0000",
+      link: "/#",
+    },
+  ];
