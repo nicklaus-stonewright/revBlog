@@ -9,6 +9,10 @@ body {
   padding: 10px !important;
 }
 
+.debug {
+  background-color: grey;
+}
+
 /* -------- blog post -------- */
 
 .blog-post {
@@ -35,7 +39,7 @@ body {
   justify-content: center;
 }
 
-.post-message {
+.post-description {
   display: flex;
   align-items: flex-start;
   justify-content: left;

@@ -21,8 +21,8 @@ const BlogPost = ({ post }) => {
         <div className="col post-timestamp post-element">{post.timestamp}</div>
       </div>
       <div className="row">
-        <div className="col post-message post-element">
-          {post.message.substring(0, 150) + "..."}
+        <div className="col post-description post-element">
+          {post.description.substring(0, 150) + "..."}
         </div>
       </div>
       <div className="row interaction-row">

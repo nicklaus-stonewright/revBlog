@@ -4,15 +4,17 @@ import { useNavigate } from "react-router-dom";
 
 const Posts = () => {
   const [formData, setFormData] = useState({
-    status: "not started",
-    progress: 0,
+    status: "active",
     timestamp: new Date().toISOString(),
+    company: "",
+    notification: "none",
+    support: "unsupported",
   });
 
-  const editMode = false;
+  const editMode = true;
   const navigate = useNavigate();
-  // const [categories, setCategories] = useContext(CategoriesContext);
-  const categories = ["Q1 2022", "Q2 2022", "test3"];
+  // const [topic, setTopics] = useContext(TopicsContext);
+  const topic = ["Recruitment Process", "Performance Review", "Other"];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,20 +39,11 @@ const Posts = () => {
   };
 
   // {
-  //   topic: "performance review",
-  //   title: "reviewer was racist",
-  //   message: "reviewer was racist",
-  //   owner: "Annie",
   //   avatar: "./assets/images/blank-avatar.jpg",
-  //   status: "active",
-  //   timestamp: "2022-05-21T07:36:17+0000",
-  //   company: "",
-  //   notification: "none",
-  //   support: "unsupported",
   // }
 
   return (
-    <div className="ticket">
+    <div className="ticket debug">
       <h1>{editMode ? "Update your Post" : "Create a Post"}</h1>
       <div className="ticket-container">
         <form onSubmit={handleSubmit}>
@@ -65,7 +58,7 @@ const Posts = () => {
               value={formData.title}
             />
 
-            <label htmlFor="description">description</label>
+            <label htmlFor="description">Description</label>
             <input
               id="description"
               name="description"
@@ -75,110 +68,42 @@ const Posts = () => {
               value={formData.description}
             />
 
-            <label>Category</label>
-            <select
-              name="category"
-              value={formData.category}
-              onChange={handleChange}
-            >
-              {categories?.map((category, _index) => (
-                <option key={_index} value={category}>
-                  {category}
+            <label>Topic</label>
+            <select name="topic" value={formData.topic} onChange={handleChange}>
+              {topic?.map((topic, _index) => (
+                <option key={_index} value={topic}>
+                  {topic}
                 </option>
               ))}
             </select>
-            <label htmlFor="new-category">new Category</label>
+            <label htmlFor="new-topic">New topic</label>
             <input
-              id="new-category"
-              name="category"
+              id="new-topic"
+              name="topic"
               type="text"
               onChange={handleChange}
               required={true}
-              value={formData.category}
+              value={formData.topic}
             />
-            <label htmlFor="priority">Priority</label>
-            <div className="multiple-input-container">
-              <input
-                id="priority1"
-                name="priority"
-                type="radio"
-                onChange={handleChange}
-                value={1}
-                checked={formData.priority == 1}
-              />
-              <label htmlFor="priority-1">1</label>
-              <input
-                id="priority1"
-                name="priority"
-                type="radio"
-                onChange={handleChange}
-                value={2}
-                checked={formData.priority == 2}
-              />
-              <label htmlFor="priority-2">2</label>
-              <input
-                id="priority1"
-                name="priority"
-                type="radio"
-                onChange={handleChange}
-                value={3}
-                checked={formData.priority == 3}
-              />
-              <label htmlFor="priority-3">3</label>
-              <input
-                id="priority1"
-                name="priority"
-                type="radio"
-                onChange={handleChange}
-                value={4}
-                checked={formData.priority == 4}
-              />
-              <label htmlFor="priority-4">4</label>
-              <input
-                id="priority1"
-                name="priority"
-                type="radio"
-                onChange={handleChange}
-                value={5}
-                checked={formData.priority == 5}
-              />
-              <label htmlFor="priority-5">5</label>
-            </div>
             {editMode && (
               <>
-                <input
-                  type="range"
-                  id="progress"
-                  name="progress"
-                  value={formData.progress}
-                  min="0"
-                  max="100"
-                  onChange={handleChange}
-                />
-                <label htmlFor="progress">Progress</label>
                 <label htmlFor="status">Status</label>
                 <select
                   name="status"
                   value={formData.status}
                   onChange={handleChange}
                 >
-                  <option selected={formData.status === "done"} value="done">
-                    Done
+                  <option
+                    selected={formData.status === "active"}
+                    value="active"
+                  >
+                    Active
                   </option>
                   <option
-                    selected={formData.status === "working on it"}
-                    value="working on it"
+                    selected={formData.status === "passive"}
+                    value="passive"
                   >
-                    Working on it
-                  </option>
-                  <option selected={formData.status === "stuck"} value="stuck">
-                    Stuck
-                  </option>
-                  <option
-                    selected={formData.status === "not started"}
-                    value="not started"
-                  >
-                    Not started
+                    Passive
                   </option>
                 </select>
               </>
@@ -195,7 +120,7 @@ const Posts = () => {
               required={true}
               value={formData.owner}
             />
-            <label htmlFor="avatar">Avatar</label>
+            <label htmlFor="avatar">Owner avatar</label>
             <input
               id="avatar"
               name="avatar"
