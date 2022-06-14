@@ -1,6 +1,8 @@
 import BlogPost from "../components/BlogPost";
+import { useNavigate } from "react-router-dom";
 
 const BlogPosts = () => {
+  const navigate = useNavigate();
   const blogPostsCollection = [
     {
       topic: "performance review",
@@ -46,6 +48,9 @@ const BlogPosts = () => {
       {blogPostsCollection.map((posts, _index) => (
         <BlogPost id={_index} post={posts} />
       ))}
+      <div className="icon icon-height" onClick={() => navigate("/tickets")}>
+        +
+      </div>
     </div>
   );
 };

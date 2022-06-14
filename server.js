@@ -8,11 +8,29 @@ const app = express();
 const token = "AstraCS:wXNSJHxOkfJYhxzsZsxuOEwY:19b1a75a425f9b594242867d83da4fb2c448d27264f50b3209ec6b7346f652ba";
 const url = "https://74709012-d3cd-49d5-9f26-1ae491ae2ca2-europe-west1.apps.astra.datastax.com/api/rest/v2/namespaces/posts/collections/blogposts";
 
+
+app.get('/blogposts', async (req, res) => {
+    const options = {
+        method: 'GET',
+        headers: {
+            Accepts: 'application/json',
+            'X-cassandra-Token': token,
+        }
+    }
+    try {
+        const response = await axios(`${urlAddTask}?page-size=20`, options)
+        res.status(200).json(response.data)
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ message: err })
+    }
+})
+
 app.post('/blogposts', async (req, res) => {
     const formData = req.body.formData
 
     const options = {
-        method: 'PORT',
+        method: 'POST',
         headers: {
             Accepts: 'application/json',
             'X-Cassandra-Token': token,
@@ -33,5 +51,5 @@ app.post('/blogposts', async (req, res) => {
 })
 
 
-app.listen(PORT, () => console.log(`server running on ${PORT}`));
+app.listen(PORT, () => console.log(`server running on port: ${PORT}`));
 
