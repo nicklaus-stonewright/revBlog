@@ -18,7 +18,7 @@ app.get('/blogposts', async (req, res) => {
         }
     }
     try {
-        const response = await axios(`${url}?page-size=20`, options)
+        const response = await axios(`${url}?page-size=3`, options)
         res.status(200).json(response.data)
     } catch (err) {
         console.log(err)

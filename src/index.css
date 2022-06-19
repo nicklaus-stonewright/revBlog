@@ -93,40 +93,53 @@ body {
 
 /* -------- Post Page -------- */
 
-.ticket {
+.post {
   padding: 30px;
   width: 100%;
 }
 
-.ticket .ticket-container {
+.post .post-container {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: left;
 }
 
-.ticket form {
+.post form {
   display: flex;
 }
 
-.ticket form section {
+.post form section {
   display: flex;
   flex-direction: column;
   margin: 10px;
-  width: 350px;
+  width: 500px;
 }
 
-.ticket form label {
+.post form label {
   margin: 20px 0 0 0;
 }
 
-.ticket form select,
-.ticket form input {
+.post form select,
+.post form input {
   padding: 10px;
   font-size: 15px;
   border-radius: 10px;
   border: 1.5px solid rgb(218, 218, 218);
   margin: 5px;
 }
-.ticket form .multiple-input-container {
+.post form .multiple-input-container {
   margin: 20px 0 20px 0;
+}
+
+.post .description {
+  height: 138px;
+}
+
+.post .section {
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1.5px solid rgb(218, 218, 218);
+  margin: 5px;
+  width: 490px;
 }

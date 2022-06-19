@@ -11,10 +11,11 @@ const Posts = () => {
     support: "unsupported",
   });
 
-  const editMode = true;
+  const editMode = false;
   const navigate = useNavigate();
   // const [topic, setTopics] = useContext(TopicsContext);
-  const topic = ["Recruitment Process", "Performance Review", "Other"];
+  const topics = ["Recruitment Process", "Performance Review", "Other"];
+  const companies = ["A2", "A0", "Aq"];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,13 +40,15 @@ const Posts = () => {
   };
 
   // {
-  //   avatar: "./assets/images/blank-avatar.jpg",
-  // }
+  //   company: "Pool",
+  //   notification: "none",
+  //   support: "supported",
+  // },
 
   return (
-    <div className="ticket debug">
+    <div className="post">
       <h1>{editMode ? "Update your Post" : "Create a Post"}</h1>
-      <div className="ticket-container">
+      <div className="post-container">
         <form onSubmit={handleSubmit}>
           <section>
             <label htmlFor="title">Title</label>
@@ -66,25 +69,56 @@ const Posts = () => {
               onChange={handleChange}
               required={true}
               value={formData.description}
+              className="description"
             />
+            <section className="section">
+              <label>Topic</label>
+              <select
+                name="topic"
+                value={formData.topic}
+                onChange={handleChange}
+              >
+                {topics?.map((topic, _index) => (
+                  <option key={_index + 1} value={topic}>
+                    {topic}
+                  </option>
+                ))}
+              </select>
 
-            <label>Topic</label>
-            <select name="topic" value={formData.topic} onChange={handleChange}>
-              {topic?.map((topic, _index) => (
-                <option key={_index} value={topic}>
-                  {topic}
-                </option>
-              ))}
-            </select>
-            <label htmlFor="new-topic">New topic</label>
-            <input
-              id="new-topic"
-              name="topic"
-              type="text"
-              onChange={handleChange}
-              required={true}
-              value={formData.topic}
-            />
+              <label htmlFor="new-topic">New topic</label>
+              <input
+                id="new-topic"
+                name="topic"
+                type="text"
+                onChange={handleChange}
+                required={true}
+                value={formData.topic}
+              />
+            </section>
+            <section className="section">
+              <label>Company</label>
+              <select
+                name="company"
+                value={formData.company}
+                onChange={handleChange}
+              >
+                {companies?.map((company, _index) => (
+                  <option key={_index + 1} value={company}>
+                    {company}
+                  </option>
+                ))}
+              </select>
+
+              <label htmlFor="new-company">New Company</label>
+              <input
+                id="new-company"
+                name="company"
+                type="text"
+                onChange={handleChange}
+                required={true}
+                value={formData.company}
+              />
+            </section>
             {editMode && (
               <>
                 <label htmlFor="status">Status</label>
@@ -108,30 +142,30 @@ const Posts = () => {
                 </select>
               </>
             )}
+            <section className="section">
+              <label htmlFor="owner">Owner</label>
+              <input
+                id="owner"
+                name="owner"
+                type="text"
+                onChange={handleChange}
+                required={true}
+                value={formData.owner}
+              />
+              <label htmlFor="avatar">Owner avatar</label>
+              <input
+                id="avatar"
+                name="avatar"
+                type="url"
+                onChange={handleChange}
+                required={false}
+                value={formData.avatar}
+              />
+              <div className="image-preview">
+                {formData.avatar && <img src={formData.avatar} alt="preview" />}
+              </div>
+            </section>
             <input type="submit" />
-          </section>
-          <section>
-            <label htmlFor="owner">Owner</label>
-            <input
-              id="owner"
-              name="owner"
-              type="text"
-              onChange={handleChange}
-              required={true}
-              value={formData.owner}
-            />
-            <label htmlFor="avatar">Owner avatar</label>
-            <input
-              id="avatar"
-              name="avatar"
-              type="url"
-              onChange={handleChange}
-              required={false}
-              value={formData.avatar}
-            />
-            <div className="image-preview">
-              {formData.avatar && <img src={formData.avatar} alt="preview" />}
-            </div>
           </section>
         </form>
       </div>
