@@ -39,12 +39,6 @@ const Posts = () => {
     }));
   };
 
-  // {
-  //   company: "Pool",
-  //   notification: "none",
-  //   support: "supported",
-  // },
-
   return (
     <div className="post">
       <h1>{editMode ? "Update your Post" : "Create a Post"}</h1>

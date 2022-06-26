@@ -1,52 +1,18 @@
 import BlogPost from "../components/BlogPost";
 import { useNavigate } from "react-router-dom";
+// import { useState, useEffect } from "react";
+// import axios from "axios";
 
-const BlogPosts = () => {
+const BlogPosts = (posts) => {
+  // const [posts, setPosts] = useState(null);
   const navigate = useNavigate();
-  const blogPostsCollection = [
-    {
-      topic: "performance review",
-      title: "review was focused on finding mistakes",
-      description: "they kept trying to find mistakes in everything I did",
-      owner: "Annie",
-      avatar: "../assets/images/owsama-hat.jpg",
-      status: "active",
-      timestamp: "2022-02-11T07:36:17+0000",
-      company: "Pool",
-      notification: "none",
-      support: "supported",
-    },
-    {
-      topic: "recruitment process",
-      title: "interview was unprofessional",
-      description: "interviewer was drunk",
-      owner: "Annie",
-      avatar: "./assets/images/doctorwho01.png",
-      status: "active",
-      timestamp: "2022-03-12T07:36:17+0000",
-      company: "UNKNOWN",
-      notification: "none",
-      support: "unsupported",
-    },
-    {
-      topic: "performance review",
-      title: "reviewer was racist",
-      description: "reviewer was racist",
-      owner: "Annie",
-      avatar: "./assets/images/blank-avatar.jpg",
-      status: "active",
-      timestamp: "2022-05-21T07:36:17+0000",
-      company: "",
-      notification: "none",
-      support: "unsupported",
-    },
-  ];
+
 
   return (
     <div className="blog-posts">
       <h2>BlogPosts</h2>
-      {blogPostsCollection.map((posts, _index) => (
-        <BlogPost id={_index} post={posts} />
+      {posts.map((post, _index) => (
+        <BlogPost id={_index} post={post} />
       ))}
       <div className="icon icon-height" onClick={() => navigate("/blogposts")}>
         +
