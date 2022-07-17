@@ -1,17 +1,38 @@
 import blankAvatar from "../assets/images/blankAvatar.jpg";
 
 const BlogPost = ({ post }) => {
+  let flagColor;
+  const getFlagColor = (nature) => {
+    switch (nature) {
+      case "positive":
+        flagColor = `green`;
+        break;
+      case "negative":
+        flagColor = `red`;
+        break;
+      default:
+        flagColor = `grey`;
+    }
+    return flagColor;
+  };
+
   return (
     <div className="container blog-post">
       <div className="row">
         <div className="col-1 post-image">
           <div className="avatar-container post-element">
             <div className="image-container">
-              <img src={post.avatar ? post.avatar : blankAvatar} />
+              <img src={post.avatar ? post.avatar : blankAvatar} alt="" />
             </div>
           </div>
         </div>
         <div className="col post-element">
+          <span
+            className="postNatureFlag"
+            style={{ color: getFlagColor(post.nature) }}
+          >
+            ⚑&nbsp;
+          </span>
           <h5>{post.title}</h5>
         </div>
       </div>
