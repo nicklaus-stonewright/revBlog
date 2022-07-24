@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import blankAvatar from "../assets/images/blankAvatar.jpg";
 
 const BlogPost = ({ post }) => {
@@ -47,12 +48,18 @@ const BlogPost = ({ post }) => {
         </div>
       </div>
       <div className="row interaction-row">
+        <div className="col post-support post-element">
+          <Link to={`/editpost/${post.documentId}`} id="link">
+            ✎
+          </Link>
+        </div>
+
         <div className="col post-support post-element">{post.support}</div>
         <div className="col post-notification post-element">
           {post.notification}
         </div>
         <div className="col post-reply post-element">
-          <i class="bi bi-reply"></i>
+          <i className="bi bi-reply"></i>
         </div>
       </div>
     </div>

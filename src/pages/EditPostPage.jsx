@@ -1,17 +1,25 @@
 import axios from "axios";
-import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-const Posts = () => {
-  const [formData, setFormData] = useState({
-    status: "active",
-    timestamp: new Date().toISOString(),
-    company: "",
-    notification: "none",
-    support: "unsupported",
-  });
+const EditPosts = () => {
+  const [formData, setFormData] = useState({});
+  const params = useParams();
+  const key = params.documentId;
 
-  const editMode = false;
+  useEffect(() => {
+    async function fetchPostData() {
+      const response = await axios.get(
+        `http://localhost:8000/blogposts/${key}`
+      );
+      const dataObject = response.data.data;
+
+      setFormData(dataObject);
+    }
+    fetchPostData();
+  }, []);
+
+  const editMode = true;
   const navigate = useNavigate();
   // const [topic, setTopics] = useContext(TopicsContext);
   const topics = ["Recruitment Process", "Performance Review", "Other"];
@@ -20,10 +28,13 @@ const Posts = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!editMode) {
-      const response = await axios.post("http://localhost:8000/blogposts", {
-        formData,
-      });
+    if (editMode) {
+      const response = await axios.put(
+        `http://localhost:8000/blogposts/${key}`,
+        {
+          formData,
+        }
+      );
       const success = response.status === 200;
       if (success) {
         navigate("/");
@@ -160,6 +171,41 @@ const Posts = () => {
                 </select>
               </>
             )}
+            {/* timestamp: new Date().toISOString(),
+    company: "",
+    notification: "none",
+    support: "unsupported", */}
+            {editMode && (
+              <>
+                <input
+                  id="notification"
+                  name="notification"
+                  type="text"
+                  onChange={handleChange}
+                  required={true}
+                  disabled={true}
+                  value={formData.notification}
+                />
+                <input
+                  id="support"
+                  name="support"
+                  type="text"
+                  onChange={handleChange}
+                  required={true}
+                  disabled={true}
+                  value={formData.support}
+                />
+                <input
+                  id="timestamp"
+                  name="timestamp"
+                  type="text"
+                  onChange={handleChange}
+                  required={true}
+                  disabled={true}
+                  value={formData.timestamp}
+                />
+              </>
+            )}
             <section className="section">
               <label htmlFor="owner">Owner</label>
               <input
@@ -174,7 +220,7 @@ const Posts = () => {
               <input
                 id="avatar"
                 name="avatar"
-                type="url"
+                type="text"
                 onChange={handleChange}
                 required={false}
                 value={formData.avatar}
@@ -191,4 +237,4 @@ const Posts = () => {
   );
 };
 
-export default Posts;
+export default EditPosts;

@@ -25,6 +25,7 @@ const Homepage = () => {
       const arrayOfData = Object.keys(dataObjects).map(
         (key) => dataObjects[key]
       );
+
       const formattedPostsArray = [];
       arrayOfKeys.forEach((key, index) => {
         const formattedPostsData = { ...arrayOfData[index] };
@@ -49,7 +50,6 @@ const Homepage = () => {
         formattedNewsArray.push(formattedNewsData);
       });
       setNews(formattedNewsArray);
-      console.log(formattedNewsArray);
     }
     fetchNewsData();
   }, []);
@@ -64,7 +64,7 @@ const Homepage = () => {
       <div className="blogposts-container">
         <h2>Recent posts</h2>
         {posts.map((post, _index) => (
-          <BlogPost id={_index} post={post} />
+          <BlogPost key={post.documentId} id={_index} post={post} />
         ))}
       </div>
       <div
@@ -76,7 +76,7 @@ const Homepage = () => {
       <div className="latestnews-container">
         <h2>Latest news</h2>
         {news.map((article, _index) => (
-          <Article id={_index} article={article} />
+          <Article key={_index} id={_index} article={article} />
         ))}
       </div>
     </div>
