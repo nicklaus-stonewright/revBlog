@@ -4,18 +4,26 @@ const blankImage = "https://source.unsplash.com/random/75x75?sig=1";
 const Article = ({ article }) => {
   return (
     <div className="container article news-article">
-      <Link to={article.link} id="link">
+      <Link to={article.url} id="link">
         <div className="container">
           <div className="row">{article.title}</div>
           <div className="row">
-            <div className="col-2">
-              <img src={article.image ? article.image : blankImage} />
+            <div className="col-2 image-container">
+              <img
+                src={article.image ? article.image : blankImage}
+                alt={article.source}
+              />
             </div>
             <div className="col">
-              <div className="row">{article.description}</div>
+              <div className="row article-description">
+                {article.description}
+              </div>
               <div className="row">
-                <div className="col">{article.publisher}</div>
-                <div className="col">{article.timestamp}</div>
+                <div className="col">{article.source}</div>
+                <div className="col">
+                  {article.published_at.substring(0, 10)} &nbsp;&nbsp;
+                  {article.published_at.substring(11, 16)}
+                </div>
               </div>
             </div>
           </div>

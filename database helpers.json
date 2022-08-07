@@ -1,0 +1,12 @@
+{
+  "questionText": "Rishi Sunak or Liz Truss?",
+  "questionAnswerType": "Single Select",
+  "questionAnswerText": "options",
+  "options": [{ "text": "Rishi Sunak" }, { "text": "Liz Truss" }]
+}
+{
+  "questionText": "Green Party or UKIP?",
+  "questionAnswerType": "Single Select",
+  "questionAnswerText": "options",
+  "options": [{ "text": "Green Party" }, { "text": "UKIP" }]
+}

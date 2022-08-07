@@ -91,6 +91,60 @@ body {
   background-color: rgb(250, 245, 227);
 }
 
+/* -------- blog post -------- */
+
+.article {
+  margin: 10px 5px 10px 5px;
+  padding: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(245, 245, 245);
+  border-radius: 5%;
+}
+
+.article-element {
+  margin: 1px 2px 1px 2px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.interaction-row {
+  border-top-style: solid;
+  border-width: 1px;
+  align-items: center;
+  justify-content: center;
+}
+
+.article-description {
+  display: flex;
+  align-items: left;
+  justify-content: center;
+}
+
+.article .avatar-container {
+  width: 80px;
+}
+
+.article .image-container {
+  height: 100px;
+  width: 150px;
+  border-radius: 25px;
+  text-align: center;
+  display: block;
+}
+
+.article .image-container img {
+  /* margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto; */
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
 /* -------- Post Page -------- */
 
 .post {
