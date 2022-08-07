@@ -129,3 +129,53 @@ app.get('/news', async (req, res) => {
         res.status(500).json({ message: err })
     }
 })
+
+
+
+// ****** Get Surveys *****
+
+const url_surveys_questionBank = "https://74709012-d3cd-49d5-9f26-1ae491ae2ca2-europe-west1.apps.astra.datastax.com/api/rest/v2/namespaces/surveys/collections/questionBank";
+
+
+app.get('/surveyquestions', async (req, res) => {
+    const options = {
+        method: 'GET',
+        headers: {
+            Accepts: 'application/json',
+            'X-cassandra-Token': token,
+        }
+    }
+    try {
+        const response = await axios(`${url_surveys_questionBank}?page-size=20`, options)
+        res.status(200).json(response.data)
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ message: err })
+    }
+})
+
+
+
+// app.post('/surveyquestions', async (req, res) => {
+//     const formData = req.body.formData
+
+//     const options = {
+//         method: 'POST',
+//         headers: {
+//             Accepts: 'application/json',
+//             'X-Cassandra-Token': token,
+//             'Content-Type': 'application/json'
+//         },
+//         data: formData
+//     }
+
+//     try {
+//         const response = await axios(url_surveys_questionBank, options)
+//         res.status(200).json(response.data)
+//     } catch (err) {
+//         console.log(err)
+//         res.status(500).json({ message: err })
+//     }
+
+
+// })

@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import BlogPost from "../components/BlogPost";
 // import LatestNews from "../collection/LatestNews";
 import Article from "../components/Article";
+import SurveyQuestion from "../components/SurveyQuestion";
 // import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +16,10 @@ const Homepage = () => {
   const [posts, setPosts] = useState(formattedPostsArray);
   const formattedNewsArray = [];
   const [news, setNews] = useState(formattedNewsArray);
+  const formattedSurveyQuestionsArray = [];
+  const [surveyQuestions, setSurveyQuestions] = useState(
+    formattedSurveyQuestionsArray
+  );
 
   useEffect(() => {
     async function fetchPostsData() {
@@ -51,7 +56,25 @@ const Homepage = () => {
       });
       setNews(formattedNewsArray);
     }
+
     fetchNewsData();
+
+    async function fetchSurveyQuestions() {
+      const response = await axios.get("http://localhost:8000/surveyquestions");
+      const dataObjects = response.data.data;
+      const arrayOfKeys = Object.keys(dataObjects);
+      const arrayOfData = Object.keys(dataObjects).map(
+        (key) => dataObjects[key]
+      );
+      const formattedSurveyQuestionsArray = [];
+      arrayOfKeys.forEach((key, index) => {
+        const formattedSurveyQuestionsData = { ...arrayOfData[index] };
+        formattedSurveyQuestionsData["documentId"] = key;
+        formattedSurveyQuestionsArray.push(formattedSurveyQuestionsData);
+      });
+      setSurveyQuestions(formattedSurveyQuestionsArray);
+    }
+    fetchSurveyQuestions();
   }, []);
 
   return (
@@ -78,6 +101,18 @@ const Homepage = () => {
         {news.map((article, _index) => (
           <Article key={_index} id={_index} article={article} />
         ))}
+      </div>
+      <div className="latestnews-container">
+        <h2>Surveys Section</h2>
+        <div>
+          {surveyQuestions.map((question, _index) => (
+            <SurveyQuestion
+              key={_index}
+              id={_index}
+              surveyQuestion={question}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
