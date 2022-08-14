@@ -9,6 +9,7 @@ import SurveyQuestion from "../components/SurveyQuestion";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+// const config = require('dotenv-config')();
 
 const Homepage = () => {
   const navigate = useNavigate();
